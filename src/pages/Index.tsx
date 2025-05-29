@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,25 +7,19 @@ import MessagesSection from '@/components/MessagesSection';
 import WalkPlanner from '@/components/WalkPlanner';
 import Navbar from '@/components/Navbar';
 import AuthModal from '@/components/AuthModal';
-
 const Index = () => {
   const [activeSection, setActiveSection] = useState('profile');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
-
   const handleAuthSuccess = () => {
     setIsAuthenticated(true);
     setShowAuthModal(false);
   };
-
   if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-purple-50 flex items-center justify-center">
+    return <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-purple-50 flex items-center justify-center">
         <div className="max-w-4xl mx-auto text-center px-6">
           <div className="mb-8">
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-500 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">
-              DogWalk Connect
-            </h1>
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-500 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-4">Гулять!</h1>
             <p className="text-xl text-gray-600 mb-8">
               Социальная сеть для владельцев собак. Найдите компаньонов для прогулок, планируйте маршруты и общайтесь!
             </p>
@@ -58,25 +51,16 @@ const Index = () => {
                 </div>
               </div>
               
-              <Button 
-                onClick={() => setShowAuthModal(true)}
-                className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
+              <Button onClick={() => setShowAuthModal(true)} className="bg-gradient-to-r from-orange-500 to-blue-500 hover:from-orange-600 hover:to-blue-600 text-white px-8 py-3 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
                 Присоединиться к сообществу
               </Button>
             </CardContent>
           </Card>
         </div>
         
-        <AuthModal 
-          isOpen={showAuthModal} 
-          onClose={() => setShowAuthModal(false)}
-          onSuccess={handleAuthSuccess}
-        />
-      </div>
-    );
+        <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} onSuccess={handleAuthSuccess} />
+      </div>;
   }
-
   const renderActiveSection = () => {
     switch (activeSection) {
       case 'profile':
@@ -91,19 +75,11 @@ const Index = () => {
         return <ProfileSection />;
     }
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-purple-50">
-      <Navbar 
-        activeSection={activeSection} 
-        setActiveSection={setActiveSection}
-        onLogout={() => setIsAuthenticated(false)}
-      />
+  return <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-purple-50">
+      <Navbar activeSection={activeSection} setActiveSection={setActiveSection} onLogout={() => setIsAuthenticated(false)} />
       <main className="pt-20">
         {renderActiveSection()}
       </main>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
