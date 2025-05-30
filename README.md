@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/c0720524-93cb-4ed8-aa6c-7843fe74d30c
+**URL**: https://github.com/Marmid3547/gulyatdog.githab.io.git
 
 ## How can I edit this code?
 
